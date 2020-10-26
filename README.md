@@ -282,7 +282,7 @@ public class Sample
 ```
 #### 6 Unit tests should be written in the arrange, act and assert format:
 
-Tip:Unit tests should be written in 3 sections, Arrange, Act, and Assert, each denoted with a comment.
+Tip: Unit tests should be written in 3 sections, Arrange, Act, and Assert, each denoted with a comment.
 
 * Arrange: all mock setups should go here.
 * Act: all actions such as methods calls go here.
@@ -299,4 +299,34 @@ Tip:Unit tests should be written in 3 sections, Arrange, Act, and Assert, each d
             //Assert
             Assert.Equal(5000,result);
         }
+```
+
+
+#### 7 The 'this' keyword should only be used when needed:
+Tip: To qualify names hidden by similar names. It eliminates naming conflicts
+#Non-compliant
+```csharp
+public class ExChange : IExcange
+{
+    private string rate;
+ 
+    public void ShowRateValue() {
+        var message = $"Rate: {this.rate}"; //the use of 'this' is unnecessary
+    }
+}
+```
+#Compliant
+```csharp
+public class ExChange : IExcange
+{
+    private string rate;
+ 
+    public void ShowRateValue() {
+        var message = $"Rate: {rate}"; // compliant - 'this' should not be used in this case
+    }
+ 
+    public void UpdateRateValue(string rate) {
+        this.rate = rate; // compliant - 'this' is needed to differentiate between the local 'rate' and the class 'rate'
+    }
+}
 ```
