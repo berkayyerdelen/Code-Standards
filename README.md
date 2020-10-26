@@ -383,3 +383,40 @@ public class SampleTest
         }
     }
 ```
+#### 9.Naming and Capitalization Conventions:
+Tip: PascalCase is used most of the time
+* Private fields: use camelCase
+* Method parameters: use camelCase
+* Local variables: use camelCase
+* A special case is made for two-letter acronyms in which both letters are capitalized (example: System.IO.Stream)
+
+
+#Compliant
+```csharp
+  class MyClass
+    {
+        // camelCase for private fields
+        private int myPrivateField;
+        private const int myConstant=1000;
+  
+        // PascalCase for public and protected static fields
+        public static int MyPublicStaticField      
+        protected static int MyProtectedStaticField
+ 
+        // PascalCase for properties
+        public int MyProperty { get; set; }
+        public HttpClient HttpClient {get; set;}
+         
+        // camelCase for parameters
+        public MyClass(int myParameter)
+        {
+            // camelCase for local variables
+            var myLocalVariable = myParameter;
+        }
+  
+        // PascalCase for ALL methods
+        private string MyMethod()
+        {
+        }
+    }
+```
