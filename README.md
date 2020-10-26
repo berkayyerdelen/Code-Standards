@@ -208,3 +208,41 @@ public enum Days
     Thursday = 4
 }
 ```
+
+#### 6.Else blocks should contain executable code:
+
+#Non-compliant
+```csharp
+public class Sample
+{
+    public void DoSomething()
+    {
+        var listOfMembers =  GetListOfMembers();
+        if(listOfMembers.Any()){
+         DoSomethingWithMembers();
+        }
+        else {
+             throw new NullReferenceException();
+        }
+    }
+}
+```
+
+#Compliant
+```csharp
+public class Sample
+{
+    public void DoSomething()
+    {
+        var listOfMembers =  GetListOfMembers();
+        if(!listOfMembers.Any()){
+         throw new BusinessException(ErrorCodes.MembersNullError);
+        }
+        else {
+             DoSomethingWithMembers();             
+        }
+    }
+}
+```
+
+
