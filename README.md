@@ -492,5 +492,18 @@ context.Products.Add(desktop);
 context.SaveChanges();
 ```
 
+#### 16.Use only complete words or common/standard abbreviations in public APIs
+Tip: Public namespaces, type names, member names, and parameter names must use complete words or common/standard abbreviations.
+
+#Non-compliant
+```csharp
+public void AddRef(AssemblyReference ref);
+public RandomClass SomeObj { get; }
+```
+#Compliant
+```csharp
+public void AddReference(AssemblyReference reference);
+public RandomClass SomeObject { get; }
+```
 
 
