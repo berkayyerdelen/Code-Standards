@@ -50,10 +50,10 @@ public Sample(IDependency dependency)
 public void Bar()
 {
     if (this.dependency is null)
-    {
-        throw new NullReferenceException(); //Instead of checking NullReferenceException, you might try to test your code correctly throug unit and integration tests
-                                            //Imagine doing null-checking for each dependencies lmfao ;)
-     }
+    {                                       //Instead of checking NullReferenceException,
+        throw new NullReferenceException(); //you might try to test your code correctly through unit and integration tests
+                                            //Imagine doing null-checking for each dependencies LMFAO ;)
+    }
  
     dependency.DoSomeStuff();
 }
@@ -69,5 +69,28 @@ public Sample(IDependency dependency)
 public void DoSomething()
 {  
     dependency.DoSomeStuff();
+}
+```
+
+#### 3.The ErrorCodes constants should be used instead of their equivalent string values:
+
+#Non-compliant
+```csharp
+public class Sample
+{
+    public void DoSomething()
+    {
+        throw new BusinessException("RANDOM_ERROR_CODE_0001"); //this does not make sense even for developers! 
+    }
+}
+```
+#Compliant
+```csharp
+public class Sample
+{
+    public void DoSomething()
+    {
+        throw new BusinessException(ErrorCodes.CheckOutError);  //works like a charm
+    }
 }
 ```
