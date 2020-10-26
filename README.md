@@ -310,9 +310,9 @@ public class ExChange : IExcange
 {
     private string rate;
  
-    public void ShowRateValue() {
-        var message = $"Rate: {this.rate}"; //the use of 'this' is unnecessary
-    }
+    public string GetRate() 
+        => $"Rate: {this.rate}"; //the use of 'this' is unnecessary
+    
 }
 ```
 #Compliant
@@ -321,12 +321,11 @@ public class ExChange : IExcange
 {
     private string rate;
  
-    public void ShowRateValue() {
-        var message = $"Rate: {rate}"; // compliant - 'this' should not be used in this case
-    }
- 
-    public void UpdateRateValue(string rate) {
-        this.rate = rate; // compliant - 'this' is needed to differentiate between the local 'rate' and the class 'rate'
-    }
+    public string GetRate() 
+        => $"Rate: {rate}"; // compliant - 'this' should not be used in this case
+    
+    public void UpdateRate(string rate) 
+       => this.rate = rate; // compliant - 'this' is needed to differentiate between the local 'rate' and the class 'rate'
+    
 }
 ```
