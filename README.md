@@ -302,7 +302,7 @@ Tip: Unit tests should be written in 3 sections, Arrange, Act, and Assert, each 
 ```
 
 
-#### 7 The 'this' keyword should only be used when needed:
+#### 7.The 'this' keyword should only be used when needed:
 Tip: To qualify names hidden by similar names. It eliminates naming conflicts
 #Non-compliant
 ```csharp
@@ -325,7 +325,61 @@ public class ExChange : IExcange
         => $"Rate: {rate}"; // compliant - 'this' should not be used in this case
     
     public void UpdateRate(string rate) 
-       => this.rate = rate; // compliant - 'this' is needed to differentiate between the local 'rate' and the class 'rate'
-    
+       => this.rate = rate; // compliant - 'this' is needed to differentiate between the local 'rate' and the class 'rate'   
 }
+```
+
+#### 8.The 'this' keyword should only be used when needed:
+Tip: Unit, integration and other kinds of tests should be named properly so that it is easier to understand their intent and so that it is easier to search for them.
+#Non-compliant
+```csharp
+public class SampleTest
+    {
+        private Sample sample;
+
+        public SampleTest()
+        {
+            sample = new Sample();
+        }
+        [Fact]
+        public void Should_Sample_Return_True() 
+        {
+            var skip = true;
+            var result = sample.DoSomething(skip);
+            Assert.Equal(5000,result);
+        }
+        [Fact]
+        public void Should_Sample_Return_False()
+        {
+            var skip = false;
+            var result = sample.DoSomething(skip);
+            Assert.Equal(1000, result);
+        }
+    }
+```
+#Compliant
+```csharp
+ public class SampleTest
+    {
+        private Sample sample;
+
+        public SampleTest()
+        {
+            sample = new Sample();
+        }
+        [Fact]
+        public void Should_Sample_Return_5000IfSkipIsTrue()
+        {
+            var skip = true;
+            var result = sample.DoSomething(skip);
+            Assert.Equal(5000,result);
+        }
+        [Fact]
+        public void Should_Sample_Return_1000IfSkipIsFalse()
+        {
+            var skip = false;
+            var result = sample.DoSomething(skip);
+            Assert.Equal(1000, result);
+        }
+    }
 ```
