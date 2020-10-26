@@ -94,3 +94,43 @@ public class Sample
     }
 }
 ```
+#### 4.Partials should not be created:
+Tip: I do believe that being able to group code to from logical block is useful, however, I do not agree to use damn partial classes since they are making less readable code for most of the cases
+
+#Non-compliant
+```csharp
+public partial class Sample 
+{
+    public void DoSomeThing()
+    {
+       
+    }
+}
+  
+public partial class Sample // non-compliant
+{
+    public void DoUsefulThing()
+    {  
+       
+    }
+}
+```
+
+#Compliant
+```csharp
+public class Some : ISome
+{
+    public void DoSomeThing()
+    {
+       
+    }
+}
+ 
+public class Useful : IUseful
+{
+    public void DoUsefulThing()
+    {  
+       
+    }
+}
+```
