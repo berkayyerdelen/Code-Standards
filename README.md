@@ -442,17 +442,7 @@ int [] numbers = {0,1,1,4,6,8};
 int number = numbers.FirstOrDefault(n=> n.Equals(1)); //its also ok
 ```
 
--------------------------------------------------
-#### 12.Use Entity framework async implementation in async methods
-public async Task<int> GetObjectsCountAsync(string categoryCode)
-{
-    var count = await (from o in Context.MyObjects.Where(MyObjectPredicateBuilder)
-                       where o.CategoryCode
-                       select t.Code).CountAsync().ConfigureAwait(false);
-    return count;  
-}
-
-#### 13.Projection queries should be used whenever possible
+#### 12.Projection queries should be used whenever possible
 Tip: This allows to get only the needed columns and therefore reduces database load and improves performances.
 #Non-compliant
 ```csharp
@@ -463,7 +453,7 @@ If only product names are needed for the process
 ```csharp
 var productNames = context.Products.select(x=>x.Name).ToList();                   
 ```
-#### 14.AsNoTracking should be used whenever possible
+#### 13.AsNoTracking should be used whenever possible
 Tip: his should be used to improve select performances (as this removes Entity Framework tracking cost) when the result does not need to be updated.
 #Non-compliant
 ```csharp
@@ -473,7 +463,7 @@ var productsQuery = context.Products.toList();
 ```csharp
 var productNames = context.Products.select(x=>x.Name).AsNoTracking().ToList();                   
 ```
-#### 15.SaveChanges should not be called several times in the same flow
+#### 14.SaveChanges should not be called several times in the same flow
 #Non-compliant
 ```csharp
 var keyboard = new Product(){Name = "logitech", CreatedDate= DateTime.Now}
@@ -492,7 +482,7 @@ context.Products.Add(desktop);
 context.SaveChanges();
 ```
 
-#### 16.Use only complete words or common/standard abbreviations in public APIs
+#### 15.Use only complete words or common/standard abbreviations in public APIs
 Tip: Public namespaces, type names, member names, and parameter names must use complete words or common/standard abbreviations.
 
 #Non-compliant
