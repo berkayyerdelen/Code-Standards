@@ -107,7 +107,7 @@ public partial class Sample
     }
 }
   
-public partial class Sample // non-compliant
+public partial class Sample 
 {
     public void DoUsefulThing()
     {  
@@ -158,11 +158,53 @@ int? value = null;
  
 if (value.HasValue)
 {
-    // ...
+   
 }
   
 if (!value.HasValue)
 {
-    // ...
+    
+}
+```
+
+#### 5.Enums should have their values explicitly defined:
+
+#Non-compliant
+```csharp
+public enum Days
+{
+    Monday,
+    Tuesday,
+    Wednesday,
+    Thursday
+}
+  
+[Flags]
+public enum Days
+{
+    Monday,
+    Tuesday,
+    Wednesday,
+    Thursday = 4
+}
+```
+#Compliant
+```csharp
+
+public enum Days
+{
+    Monday = 0,
+    Tuesday = 1,
+    Wednesday = 2,
+    Thursday = 3
+}
+ 
+[Flags]
+public enum Days
+{
+    Monday = 0,
+    Tuesday = 1,
+    Wednesday = 2,
+    Thursday = 4
 }
 ```
