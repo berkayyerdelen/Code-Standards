@@ -432,3 +432,12 @@ Project  DevFrame.Entities
 Solution DevFrame.Domain
 Project  DevFrame.Domain.Entities
 ```
+#### 11.Use of SingleOrDefault or FirstOrDefault should be assessed carefully
+Tip: The main difference is that SingleOrDefault throws if the result contains more than one match whereas FirstOrDefault does not throw in such a situation.
+#Compliant
+```csharp
+int [] numbers = {0,1,2,4,6,8};
+int number = numbers.SingleOrDefault(n=> n.Equals(1)); //its ok
+int [] numbers = {0,1,1,4,6,8};
+int number = numbers.FirstOrDefault(n=> n.Equals(1)); //its also ok
+```
