@@ -420,3 +420,15 @@ Tip: PascalCase is used most of the time
         }
     }
 ```
+
+#### 10.Solution names and project names should be equal to the primary namespace
+#Non-compliant
+```csharp
+Solution DevFrame.Domain
+Project  DevFrame.Entities
+```
+#Compliant
+```csharp
+Solution DevFrame.Domain
+Project  DevFrame.Domain.Entities
+```
