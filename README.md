@@ -134,3 +134,35 @@ public class Useful : IUseful
     }
 }
 ```
+
+#### 5.Nullable.HasValue should be used:
+
+#Non-compliant
+```csharp
+int? value = null;
+  
+if (value != null)
+{
+    
+}
+  
+if (value == null)
+{
+   
+}
+```
+
+#Compliant
+```csharp
+int? value = null;
+ 
+if (value.HasValue)
+{
+    // ...
+}
+  
+if (!value.HasValue)
+{
+    // ...
+}
+```
