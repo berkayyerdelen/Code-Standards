@@ -142,28 +142,24 @@ public class Useful : IUseful
 int? value = null;
   
 if (value != null)
-{
-    
+{    
 }
   
 if (value == null)
-{
-   
+{   
 }
 ```
 
 #Compliant
 ```csharp
 int? value = null;
- 
+
 if (value.HasValue)
-{
-   
+{   
 }
   
 if (!value.HasValue)
-{
-    
+{   
 }
 ```
 
@@ -245,4 +241,42 @@ public class Sample
 }
 ```
 
+#### 6.Public methods should have 1 unit test for each logical flow
 
+#Compliant
+```csharp
+ public class Sample
+    {
+        public int DoSomething(bool skip)
+        {
+            if (skip)
+                return 1000;
+            else
+                return 5000;
+        }
+    }
+
+ public class SampleTest
+    {
+        private Sample sample;
+
+        public SampleTest()
+        {
+            sample = new Sample();
+        }
+        [Fact]
+        public void Should_Sample_Return_5000IfSkipIsTrue()
+        {
+            var skip = true;
+            var result = sample.DoSomething(skip);
+            Assert.Equal(5000,result);
+        }
+        [Fact]
+        public void Should_Sample_Return_1000IfSkipIsFalse()
+        {
+            var skip = false;
+            var result = sample.DoSomething(skip);
+            Assert.Equal(1000, result);
+        }
+    }
+```
