@@ -241,7 +241,7 @@ public class Sample
 }
 ```
 
-#### 6.Public methods should have 1 unit test for each logical flow
+#### 6.Public methods should have 1 unit test for each logical flow:
 
 #Compliant
 ```csharp
@@ -279,4 +279,24 @@ public class Sample
             Assert.Equal(1000, result);
         }
     }
+```
+#### 6 Unit tests should be written in the arrange, act and assert format:
+
+Tip:Unit tests should be written in 3 sections, Arrange, Act, and Assert, each denoted with a comment.
+
+* Arrange: all mock setups should go here.
+* Act: all actions such as methods calls go here.
+* Assert: assert or mock verification(s) goes here
+#Compliant
+```csharp
+  [Fact]
+        public void Should_Sample_Return_5000IfSkipIsTrue()
+        {
+            //Arrange
+            var skip = true;
+            //Act
+            var result = sample.DoSomething(skip);
+            //Assert
+            Assert.Equal(5000,result);
+        }
 ```
