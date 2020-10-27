@@ -304,7 +304,8 @@ Tip: Unit tests should be written in 3 sections, Arrange, Act, and Assert, each 
 
 
 #### 7.The 'this' keyword should only be used when needed:
-Tip: To qualify names hidden by similar names. It eliminates naming conflicts
+Tip: To qualify names hidden by similar names. It eliminates naming conflicts.
+
 #Non-compliant
 ```csharp
 public class ExChange : IExcange
@@ -332,6 +333,7 @@ public class ExChange : IExcange
 
 #### 8.The 'this' keyword should only be used when needed:
 Tip: Unit, integration and other kinds of tests should be named properly so that it is easier to understand their intent and so that it is easier to search for them.
+
 #Non-compliant
 ```csharp
 public class SampleTest
@@ -422,7 +424,8 @@ Tip: PascalCase is used most of the time
     }
 ```
 
-#### 10.Solution names and project names should be equal to the primary namespace
+#### 10.Solution names and project names should be equal to the primary namespace:
+
 #Non-compliant
 ```csharp
 Solution DevFrame.Domain
@@ -435,6 +438,7 @@ Project  DevFrame.Domain.Entities
 ```
 #### 11.Use of SingleOrDefault or FirstOrDefault should be assessed carefully
 Tip: The main difference is that SingleOrDefault throws if the result contains more than one match whereas FirstOrDefault does not throw in such a situation.
+
 #Compliant
 ```csharp
 int [] numbers = {0,1,2,4,6,8};
@@ -445,6 +449,7 @@ int number = numbers.FirstOrDefault(n=> n.Equals(1)); //its also ok
 
 #### 12.Projection queries should be used whenever possible
 Tip: This allows to get only the needed columns and therefore reduces database load and improves performances.
+
 #Non-compliant
 ```csharp
 var productsQuery = context.Products.toList();
@@ -456,6 +461,7 @@ var productNames = context.Products.select(x=>x.Name).ToList();
 ```
 #### 13.AsNoTracking should be used whenever possible
 Tip: his should be used to improve select performances (as this removes Entity Framework tracking cost) when the result does not need to be updated.
+
 #Non-compliant
 ```csharp
 var productsQuery = context.Products.toList();
