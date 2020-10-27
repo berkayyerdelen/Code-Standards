@@ -286,7 +286,8 @@ Tip: Unit tests should be written in 3 sections, Arrange, Act, and Assert, each 
 
 * Arrange: all mock setups should go here.
 * Act: all actions such as methods calls go here.
-* Assert: assert or mock verification(s) goes here
+* Assert: assert or mock verification(s) goes here.
+
 #Compliant
 ```csharp
   [Fact]
