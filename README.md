@@ -1,4 +1,4 @@
-# Code Standarts
+# Code Standards
 
 #### 1.Dependencies should only be resolved in the class' constructor, not in any methods or properties:
 
