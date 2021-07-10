@@ -331,7 +331,7 @@ public class ExChange : IExcange
 }
 ```
 
-#### 8.The 'this' keyword should only be used when needed:
+#### 8.Tests should be named properly:
 Tip: Unit, integration and other kinds of tests should be named properly so that it is easier to understand their intent and so that it is easier to search for them.
 
 #Non-compliant
