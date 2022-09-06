@@ -503,4 +503,22 @@ public void AddReference(AssemblyReference reference);
 public RandomClass SomeObject { get; }
 ```
 
+#### 16.Do not use Count/LongCount when Any can be used
+
+#Non-compliant
+```csharp
+int [] letters = {'A','B','C','D','E'};
+if (letters.Count() > 0)
+{
+    DoSomething();
+}
+```
+#Compliant
+```csharp
+int [] letters = {'A','B','C','D','E'};
+if (letters.Any())
+{
+    DoSomething();
+}
+```
 
